@@ -17,6 +17,11 @@
     <div class="py-5 text-center">
         <h2>상품 상세</h2>
     </div>
+    <!--
+    //http://localhost:8088/basic/items/3?status=true
+    ${param.status} = true  쿼리파라미터 값을 사용할 수 있다
+    -->
+    <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
 
     <div>
         <label for="itemId">상품 ID</label>
@@ -50,6 +55,14 @@
                     th:onclick="|location.href='@{/basic/items}'|"
                     type="button">목록으로</button>
         </div>
+        <div class="col">
+            <form action="item.html" th:action="@{/basic/items/{itemId}/delete(itemId=${item.id})}" method="post">
+                <div class="col">
+                    <button class="w-100 btn btn-danger btn-lg" type="submit">상품 삭제</button>
+                </div>
+            </form>
+        </div>
+
     </div>
 
 </div> <!-- /container -->
